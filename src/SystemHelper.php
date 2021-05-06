@@ -65,6 +65,8 @@ class SystemHelper
         // 取得設定參數
         $op = $options + $defaultOptions;
 
+        // 更新資料
+        $_COOKIE[$name] = $value;
         return setcookie($name, $value, $op['expires'], $op['path'], $op['domain'], $op['secure'], $op['httponly']);
     }
 
@@ -73,7 +75,7 @@ class SystemHelper
      *
      * - 需設定常數 COOKIE_ROOT_DOMAIN，如沒設定則為當前網域
      * - 本函式為指定 domain 參數的 cookieSet() 函式
-     * - 目前網域與根網域有同名稱變數時，優先讀取目前網域資料
+     * - 目前網域與根網域有同名稱變數時，優先讀取先設定的資料(chrome,20210506,PHP7)
      *
      * @param  string  $name    Cookie Name
      * @param  string  $value   Cookie Value
@@ -91,7 +93,7 @@ class SystemHelper
     /**
      * 取得Cookie
      * 
-     * - 目前網域與根網域有同名稱變數時，優先讀取目前網域資料
+     * - 目前網域與根網域有同名稱變數時，優先讀取先設定的資料(chrome,20210506,PHP7)
      * 
      * @param  string   $name Cookie Name
      * @return string
