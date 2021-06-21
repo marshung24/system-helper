@@ -10,6 +10,7 @@ include('../vendor/autoload.php');
 use marsapp\helper\system\SystemHelper;
 
 // 常數設定
+define('COOKIE_DEFAULT_PREFIX', 'dev_');
 define('COOKIE_DEFAULT_EXPIRES', 0);
 define('COOKIE_DEFAULT_PATH', '/');
 define('COOKIE_ROOT_DOMAIN', 'dev.local');
@@ -18,6 +19,8 @@ define('COOKIE_ROOT_DOMAIN', 'dev.local');
 $name = 'testCookie';
 $value = "test-" . mt_rand(1111, 9999);
 $options = [
+    // Cookie前綴，預設無前綴
+    'prefix' => '',
     // 過期時間，預設無期限
     'expires' => time()+3600,
     // 存放路徑
@@ -29,6 +32,11 @@ $options = [
     // 是否只能通過HTTP協議訪問
     'httponly' => false,
 ];
+
+// Cookie預設參數處理-單筆
+$param = 'prefix';
+$pValue = 'test_';
+SystemHelper::cookieOption($param, $pValue);
 
 // 設定Cookie
 SystemHelper::cookieSet($name, $value, $options);
