@@ -13,6 +13,8 @@ use marsapp\helper\system\SystemHelper;
 define('COOKIE_DEFAULT_PREFIX', 'dev_');
 define('COOKIE_DEFAULT_EXPIRES', 0);
 define('COOKIE_DEFAULT_PATH', '/');
+// define('COOKIE_DEFAULT_DOMAIN', $_SERVER['SERVER_NAME']);
+define('COOKIE_DEFAULT_DOMAIN', '');
 define('COOKIE_ROOT_DOMAIN', 'dev.local');
 
 // 變數設定
